@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_TasOsE--Ee2Ow7UA1y7bIA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_XvakYFO9Ee2mxOPEujCdUg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_IDSolicitudItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_IDTramiteItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_conProOutItem" structureRef="Integer"/>
   <bpmn2:itemDefinition id="_desAsigOutItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_predioOutItem" structureRef="com.Predio"/>
   <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_PriorityInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_CommentInputXItem" structureRef="Object"/>
@@ -18,6 +19,8 @@
   <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_NotCompletedNotifyInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_IDSolicitudOutInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_IDTramiteOutInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_predioOutInputXItem" structureRef="com.Predio"/>
+  <bpmn2:itemDefinition id="__AA291A6C-B87C-417B-8B19-6593713AA94B_desAsigOutOutputXItem" structureRef="Object"/>
   <bpmn2:process id="SistemaNacionalCatastral.processAsig" drools:packageName="org.jbpm" drools:version="1.0" drools:adHoc="false" name="processAsig" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
       <drools:import name="com.Tramite"/>
@@ -27,24 +30,25 @@
     <bpmn2:property id="IDTramite" itemSubjectRef="_IDTramiteItem" name="IDTramite"/>
     <bpmn2:property id="conProOut" itemSubjectRef="_conProOutItem" name="conProOut"/>
     <bpmn2:property id="desAsigOut" itemSubjectRef="_desAsigOutItem" name="desAsigOut"/>
+    <bpmn2:property id="predioOut" itemSubjectRef="_predioOutItem" name="predioOut"/>
     <bpmn2:sequenceFlow id="_592F44F3-03B3-4B74-8BAE-77162CCE4951" sourceRef="_5EDBE67F-859F-4CF9-BD16-C04C46435E0E" targetRef="_3CD5A895-CE02-44A4-B8BB-643E4AF20029">
-      <bpmn2:documentation id="_TasOsU--Ee2Ow7UA1y7bIA"><![CDATA[Compuerta de decisión con tres posibles caminos
+      <bpmn2:documentation id="_XvakYVO9Ee2mxOPEujCdUg"><![CDATA[Compuerta de decisión con tres posibles caminos
 Mapear la variable desAsigOut 1 Avanza a ejecución
 ]]></bpmn2:documentation>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_TasOsk--Ee2Ow7UA1y7bIA" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(desAsigOut, "1");]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_XvakYlO9Ee2mxOPEujCdUg" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(desAsigOut, "1");]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_0BE9DBE6-9D1E-4C02-B160-D380B1453C21" sourceRef="_AA291A6C-B87C-417B-8B19-6593713AA94B" targetRef="_5EDBE67F-859F-4CF9-BD16-C04C46435E0E"/>
     <bpmn2:sequenceFlow id="_5D3C5EE4-F9A3-4BDA-8D4C-750BB42F89C4" sourceRef="_5D302EFF-D665-47B3-9656-28AE21C2CB68" targetRef="_AA291A6C-B87C-417B-8B19-6593713AA94B">
-      <bpmn2:documentation id="_TasOs0--Ee2Ow7UA1y7bIA"><![CDATA[Compuerta de decisión con tres posibles caminos
+      <bpmn2:documentation id="_XvakY1O9Ee2mxOPEujCdUg"><![CDATA[Compuerta de decisión con tres posibles caminos
 Mapear la variable conProOut 1 continuar proceso]]></bpmn2:documentation>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_TasOtE--Ee2Ow7UA1y7bIA" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(conProOut, "1");]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_XvakZFO9Ee2mxOPEujCdUg" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(conProOut, "1");]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_DD2415E3-0FD8-43F1-A396-46FC7DC79EA7" sourceRef="_5EDBE67F-859F-4CF9-BD16-C04C46435E0E" targetRef="_5D302EFF-D665-47B3-9656-28AE21C2CB68">
+      <bpmn2:documentation id="_XvakZVO9Ee2mxOPEujCdUg"><![CDATA[Compuerta de decisión con tres posibles caminos
+Mapear la variable desAsigOut 1 devuelve a la bolsa]]></bpmn2:documentation>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_XvakZlO9Ee2mxOPEujCdUg" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(desAsigOut, "2");]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_A24C1AE0-0F31-4A00-835E-CB3B3FD06E71" sourceRef="_337970BE-C592-4C17-BBD2-8A09C607E330" targetRef="_5D302EFF-D665-47B3-9656-28AE21C2CB68"/>
-    <bpmn2:sequenceFlow id="_DD2415E3-0FD8-43F1-A396-46FC7DC79EA7" sourceRef="_5EDBE67F-859F-4CF9-BD16-C04C46435E0E" targetRef="_5D302EFF-D665-47B3-9656-28AE21C2CB68">
-      <bpmn2:documentation id="_TasOtU--Ee2Ow7UA1y7bIA"><![CDATA[Compuerta de decisión con tres posibles caminos
-Mapear la variable desAsigOut 1 devuelve a la bolsa]]></bpmn2:documentation>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_TasOtk--Ee2Ow7UA1y7bIA" language="http://www.java.com/java"><![CDATA[return KieFunctions.equalsTo(desAsigOut, "2");]]></bpmn2:conditionExpression>
-    </bpmn2:sequenceFlow>
     <bpmn2:userTask id="_AA291A6C-B87C-417B-8B19-6593713AA94B" name="ASIGNACION">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -53,48 +57,61 @@ Mapear la variable desAsigOut 1 devuelve a la bolsa]]></bpmn2:documentation>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_5D3C5EE4-F9A3-4BDA-8D4C-750BB42F89C4</bpmn2:incoming>
       <bpmn2:outgoing>_0BE9DBE6-9D1E-4C02-B160-D380B1453C21</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_TasOt0--Ee2Ow7UA1y7bIA">
+      <bpmn2:ioSpecification id="_XvakZ1O9Ee2mxOPEujCdUg">
         <bpmn2:dataInput id="_AA291A6C-B87C-417B-8B19-6593713AA94B_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__AA291A6C-B87C-417B-8B19-6593713AA94B_TaskNameInputXItem" name="TaskName"/>
         <bpmn2:dataInput id="_AA291A6C-B87C-417B-8B19-6593713AA94B_IDSolicitudOutInputX" drools:dtype="String" itemSubjectRef="__AA291A6C-B87C-417B-8B19-6593713AA94B_IDSolicitudOutInputXItem" name="IDSolicitudOut"/>
         <bpmn2:dataInput id="_AA291A6C-B87C-417B-8B19-6593713AA94B_IDTramiteOutInputX" drools:dtype="String" itemSubjectRef="__AA291A6C-B87C-417B-8B19-6593713AA94B_IDTramiteOutInputXItem" name="IDTramiteOut"/>
+        <bpmn2:dataInput id="_AA291A6C-B87C-417B-8B19-6593713AA94B_predioOutInputX" drools:dtype="com.Predio" itemSubjectRef="__AA291A6C-B87C-417B-8B19-6593713AA94B_predioOutInputXItem" name="predioOut"/>
         <bpmn2:dataInput id="_AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputX" drools:dtype="Object" itemSubjectRef="__AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputXItem" name="Skippable"/>
-        <bpmn2:inputSet id="_TasOuE--Ee2Ow7UA1y7bIA">
+        <bpmn2:dataOutput id="_AA291A6C-B87C-417B-8B19-6593713AA94B_desAsigOutOutputX" drools:dtype="Object" itemSubjectRef="__AA291A6C-B87C-417B-8B19-6593713AA94B_desAsigOutOutputXItem" name="desAsigOut"/>
+        <bpmn2:inputSet id="_XvakaFO9Ee2mxOPEujCdUg">
           <bpmn2:dataInputRefs>_AA291A6C-B87C-417B-8B19-6593713AA94B_TaskNameInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_AA291A6C-B87C-417B-8B19-6593713AA94B_IDSolicitudOutInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_AA291A6C-B87C-417B-8B19-6593713AA94B_IDTramiteOutInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_AA291A6C-B87C-417B-8B19-6593713AA94B_predioOutInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputX</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
-        <bpmn2:outputSet id="_TasOuU--Ee2Ow7UA1y7bIA"/>
+        <bpmn2:outputSet id="_XvakaVO9Ee2mxOPEujCdUg">
+          <bpmn2:dataOutputRefs>_AA291A6C-B87C-417B-8B19-6593713AA94B_desAsigOutOutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
       </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="_TasOuk--Ee2Ow7UA1y7bIA">
+      <bpmn2:dataInputAssociation id="_XvakalO9Ee2mxOPEujCdUg">
         <bpmn2:targetRef>_AA291A6C-B87C-417B-8B19-6593713AA94B_TaskNameInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_TasOu0--Ee2Ow7UA1y7bIA">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_TasOvE--Ee2Ow7UA1y7bIA"><![CDATA[Task]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_TasOvU--Ee2Ow7UA1y7bIA">_AA291A6C-B87C-417B-8B19-6593713AA94B_TaskNameInputX</bpmn2:to>
+        <bpmn2:assignment id="_Xvaka1O9Ee2mxOPEujCdUg">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_XvakbFO9Ee2mxOPEujCdUg"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_XvakbVO9Ee2mxOPEujCdUg">_AA291A6C-B87C-417B-8B19-6593713AA94B_TaskNameInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_TasOvk--Ee2Ow7UA1y7bIA">
+      <bpmn2:dataInputAssociation id="_XvakblO9Ee2mxOPEujCdUg">
         <bpmn2:sourceRef>IDSolicitud</bpmn2:sourceRef>
         <bpmn2:targetRef>_AA291A6C-B87C-417B-8B19-6593713AA94B_IDSolicitudOutInputX</bpmn2:targetRef>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_TasOv0--Ee2Ow7UA1y7bIA">
+      <bpmn2:dataInputAssociation id="_Xvakb1O9Ee2mxOPEujCdUg">
         <bpmn2:sourceRef>IDTramite</bpmn2:sourceRef>
         <bpmn2:targetRef>_AA291A6C-B87C-417B-8B19-6593713AA94B_IDTramiteOutInputX</bpmn2:targetRef>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_TasOwE--Ee2Ow7UA1y7bIA">
+      <bpmn2:dataInputAssociation id="_XvakcFO9Ee2mxOPEujCdUg">
+        <bpmn2:sourceRef>predioOut</bpmn2:sourceRef>
+        <bpmn2:targetRef>_AA291A6C-B87C-417B-8B19-6593713AA94B_predioOutInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_XvakcVO9Ee2mxOPEujCdUg">
         <bpmn2:targetRef>_AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_TasOwU--Ee2Ow7UA1y7bIA">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_TasOwk--Ee2Ow7UA1y7bIA"><![CDATA[false]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_TasOw0--Ee2Ow7UA1y7bIA">_AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputX</bpmn2:to>
+        <bpmn2:assignment id="_XvakclO9Ee2mxOPEujCdUg">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_Xvakc1O9Ee2mxOPEujCdUg"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_XvakdFO9Ee2mxOPEujCdUg">_AA291A6C-B87C-417B-8B19-6593713AA94B_SkippableInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_XvakdVO9Ee2mxOPEujCdUg">
+        <bpmn2:sourceRef>_AA291A6C-B87C-417B-8B19-6593713AA94B_desAsigOutOutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>desAsigOut</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
     </bpmn2:userTask>
     <bpmn2:endEvent id="_3CD5A895-CE02-44A4-B8BB-643E4AF20029">
       <bpmn2:incoming>_592F44F3-03B3-4B74-8BAE-77162CCE4951</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:exclusiveGateway id="_5EDBE67F-859F-4CF9-BD16-C04C46435E0E" name="Decision
 Asigancion" gatewayDirection="Diverging">
-      <bpmn2:documentation id="_TasOxE--Ee2Ow7UA1y7bIA"><![CDATA[Compuerta de decisión con tres posibles caminos
+      <bpmn2:documentation id="_XvakdlO9Ee2mxOPEujCdUg"><![CDATA[Compuerta de decisión con tres posibles caminos
 Mapear la variable  desAsigOut de acuerdo a los siguientes valores:
 
 desAsigOut 1 Avanza a ejecución
@@ -114,20 +131,20 @@ Asigancion]]></drools:metaValue>
     </bpmn2:startEvent>
     <bpmn2:exclusiveGateway id="_5D302EFF-D665-47B3-9656-28AE21C2CB68" name="Avanzar
 Asignación" gatewayDirection="Converging">
-      <bpmn2:documentation id="_TasOxU--Ee2Ow7UA1y7bIA"><![CDATA[Conector de las decisiones, se debe avanzar instanciando la variable conProOut = 1]]></bpmn2:documentation>
+      <bpmn2:documentation id="_XvbLcFO9Ee2mxOPEujCdUg"><![CDATA[Conector de las decisiones, se debe avanzar instanciando la variable conProOut = 1]]></bpmn2:documentation>
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Avanzar
 Asignación]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>_DD2415E3-0FD8-43F1-A396-46FC7DC79EA7</bpmn2:incoming>
       <bpmn2:incoming>_A24C1AE0-0F31-4A00-835E-CB3B3FD06E71</bpmn2:incoming>
+      <bpmn2:incoming>_DD2415E3-0FD8-43F1-A396-46FC7DC79EA7</bpmn2:incoming>
       <bpmn2:outgoing>_5D3C5EE4-F9A3-4BDA-8D4C-750BB42F89C4</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
   </bpmn2:process>
-  <bpmndi:BPMNDiagram id="_TasOxk--Ee2Ow7UA1y7bIA">
-    <bpmndi:BPMNPlane id="_TasOx0--Ee2Ow7UA1y7bIA" bpmnElement="SistemaNacionalCatastral.processAsig">
+  <bpmndi:BPMNDiagram id="_XvbLcVO9Ee2mxOPEujCdUg">
+    <bpmndi:BPMNPlane id="_XvbLclO9Ee2mxOPEujCdUg" bpmnElement="SistemaNacionalCatastral.processAsig">
       <bpmndi:BPMNShape id="shape__5D302EFF-D665-47B3-9656-28AE21C2CB68" bpmnElement="_5D302EFF-D665-47B3-9656-28AE21C2CB68">
         <dc:Bounds height="56.0" width="56.0" x="444.0" y="112.0"/>
       </bpmndi:BPMNShape>
@@ -143,15 +160,15 @@ Asignación]]></drools:metaValue>
       <bpmndi:BPMNShape id="shape__AA291A6C-B87C-417B-8B19-6593713AA94B" bpmnElement="_AA291A6C-B87C-417B-8B19-6593713AA94B">
         <dc:Bounds height="102.0" width="154.0" x="580.0" y="89.0"/>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__337970BE-C592-4C17-BBD2-8A09C607E330_to_shape__5D302EFF-D665-47B3-9656-28AE21C2CB68" bpmnElement="_A24C1AE0-0F31-4A00-835E-CB3B3FD06E71">
+        <di:waypoint xsi:type="dc:Point" x="346.0" y="140.0"/>
+        <di:waypoint xsi:type="dc:Point" x="444.0" y="140.0"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__5EDBE67F-859F-4CF9-BD16-C04C46435E0E_to_shape__5D302EFF-D665-47B3-9656-28AE21C2CB68" bpmnElement="_DD2415E3-0FD8-43F1-A396-46FC7DC79EA7">
         <di:waypoint xsi:type="dc:Point" x="841.0" y="168.0"/>
         <di:waypoint xsi:type="dc:Point" x="841.0" y="247.0"/>
         <di:waypoint xsi:type="dc:Point" x="472.0" y="247.0"/>
         <di:waypoint xsi:type="dc:Point" x="472.0" y="168.0"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__337970BE-C592-4C17-BBD2-8A09C607E330_to_shape__5D302EFF-D665-47B3-9656-28AE21C2CB68" bpmnElement="_A24C1AE0-0F31-4A00-835E-CB3B3FD06E71">
-        <di:waypoint xsi:type="dc:Point" x="346.0" y="140.0"/>
-        <di:waypoint xsi:type="dc:Point" x="444.0" y="140.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__5D302EFF-D665-47B3-9656-28AE21C2CB68_to_shape__AA291A6C-B87C-417B-8B19-6593713AA94B" bpmnElement="_5D3C5EE4-F9A3-4BDA-8D4C-750BB42F89C4">
         <di:waypoint xsi:type="dc:Point" x="472.0" y="140.0"/>
@@ -167,19 +184,19 @@ Asignación]]></drools:metaValue>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-  <bpmn2:relationship id="_TasOyE--Ee2Ow7UA1y7bIA" type="BPSimData">
+  <bpmn2:relationship id="_XvbLc1O9Ee2mxOPEujCdUg" type="BPSimData">
     <bpmn2:extensionElements>
       <bpsim:BPSimData>
         <bpsim:Scenario xsi:type="bpsim:Scenario" id="default" name="Simulationscenario">
           <bpsim:ScenarioParameters xsi:type="bpsim:ScenarioParameters"/>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_337970BE-C592-4C17-BBD2-8A09C607E330" id="_TasOyU--Ee2Ow7UA1y7bIA">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_337970BE-C592-4C17-BBD2-8A09C607E330" id="_XvbLdFO9Ee2mxOPEujCdUg">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_AA291A6C-B87C-417B-8B19-6593713AA94B" id="_TasOyk--Ee2Ow7UA1y7bIA">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_AA291A6C-B87C-417B-8B19-6593713AA94B" id="_XvbLdVO9Ee2mxOPEujCdUg">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
@@ -202,7 +219,7 @@ Asignación]]></drools:metaValue>
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_TasOsE--Ee2Ow7UA1y7bIA</bpmn2:source>
-    <bpmn2:target>_TasOsE--Ee2Ow7UA1y7bIA</bpmn2:target>
+    <bpmn2:source>_XvakYFO9Ee2mxOPEujCdUg</bpmn2:source>
+    <bpmn2:target>_XvakYFO9Ee2mxOPEujCdUg</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
